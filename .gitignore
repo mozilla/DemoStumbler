@@ -1,6 +1,30 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
+.gradle
+.settings
+.idea
+*.iml
+assets
+bin
+gen
+build
+local.properties
+gradle.properties
+
+# ignore vim swap files
+*.sw?
+
+# JAR releases
+android/libs/*.jar
+
+# ctags
+tags
+
+
+# Mozilla Special Sauce
+# Never commit your private.properties file or your keystore
+android/properties/**
+
+*.keystore
+
+# Ignore final release APK builds
+outputs/*
