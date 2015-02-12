@@ -1,4 +1,6 @@
-# DemoStumbler - A demo of how to embed the Mozilla Stumbler as a library in your Android Application
+# DemoStumbler
+
+## Embed the Mozilla Stumbler as a library in your Android Application
 
 The [Mozilla Stumbler](https://github.com/mozilla/MozStumbler/) is an Android wifi and cell tower stumbling application which 
 is designed to collect location data and submit it to our location service [Ichnaea](http://github.com/mozilla/ichnaea/).
