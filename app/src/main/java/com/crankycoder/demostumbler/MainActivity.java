@@ -1,13 +1,17 @@
 package com.crankycoder.demostumbler;
 
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.mozilla.mozstumbler.service.core.http.IHttpUtil;
 import org.mozilla.mozstumbler.service.mainthread.PassiveServiceReceiver;
+import org.mozilla.mozstumbler.svclocator.ServiceConfig;
+import org.mozilla.mozstumbler.svclocator.ServiceLocator;
+import org.mozilla.mozstumbler.svclocator.services.ISystemClock;
+import org.mozilla.mozstumbler.svclocator.services.log.ILogger;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,9 +21,34 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // No idea why, but Android Studio doesn't seem to be aware of this API call.
-        Intent i = PassiveServiceReceiver.createStartIntent("a", "b");
+        // Setup the ServiceLocator
+        ServiceLocator.newRoot(defaultServiceConfig());
+
+        Intent i = PassiveServiceReceiver.createStartIntent("a_moz_api_key",
+                "Just Another User-Agent");
         startService(i);
+    }
+
+    public static ServiceConfig defaultServiceConfig() {
+        /*
+         This will configure the service map with all services required for runtime.
+
+         Note that the logger checks the buildconfig type to determine whether or not to use the DebugLogger
+         or the ProductionLogger.
+         */
+
+        ServiceConfig result = new ServiceConfig();
+        // All classes here must have an argument free constructor.
+        result.put(IHttpUtil.class,
+                ServiceConfig.load("org.mozilla.mozstumbler.service.core.http.HttpUtil"));
+        // All classes here must have an argument free constructor.
+        result.put(ISystemClock.class,
+                ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.SystemClock"));
+
+        result.put(ILogger.class,
+                ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.ProductionLogger"));
+
+        return result;
     }
 
     @Override
