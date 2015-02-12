@@ -1,9 +1,13 @@
 package com.crankycoder.demostumbler;
 
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.mozilla.mozstumbler.service.mainthread.PassiveServiceReceiver;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,8 +16,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+        // No idea why, but Android Studio doesn't seem to be aware of this API call.
+        Intent i = PassiveServiceReceiver.createStartIntent("a", "b");
+        startService(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

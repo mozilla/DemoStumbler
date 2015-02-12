@@ -16,6 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="org.mozilla.mozstumbler.service.stumblerthread.StumblerService"
+            android:label="StumblerService" >
+        </service>
+
+        <receiver android:name="org.mozilla.mozstumbler.service.mainthread.PassiveServiceReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.location.GPS_ENABLED_CHANGE" />
+                <action android:name="android.location.GPS_FIX_CHANGE" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
