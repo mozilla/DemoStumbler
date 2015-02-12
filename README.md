@@ -44,3 +44,24 @@ Intent i = PassiveServiceReceiver.createStartIntent("a_moz_api_key",
         "Just Another User-Agent");
 startService(i);
 ```
+
+
+## Build and install the code
+
+### Enable Developer Options if you haven't done so already
+
+1. Open Settings> About> Software Information> More.
+2. Then tap “Build number” seven times to enable Developer options. ...
+3. Go back to Settings menu and now you'll be able to see “Developer options” there.
+4. Tap it and turn on USB Debugging from the menu on the next screen.
+    
+### Connect your Android device over USB, build and install.
+
+From command line on UNIX: 
+```bash
+./gradlew installDebug
+```
+
+You can alternately just open Android Studio and use the IDE to build and install the application.
+
+
