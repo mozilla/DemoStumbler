@@ -22,6 +22,9 @@
             android:label="StumblerService" >
         </service>
 
+        <receiver android:name="org.mozilla.mozstumbler.service.uploadthread.UploadAlarmReceiver"/>
+        <service android:name="org.mozilla.mozstumbler.service.uploadthread.UploadAlarmReceiver$UploadAlarmService"/>
+
         <receiver android:name="org.mozilla.mozstumbler.service.mainthread.PassiveServiceReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
