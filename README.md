@@ -36,11 +36,14 @@ svcConfig.put(IHttpUtil.class,
         ServiceConfig.load("org.mozilla.mozstumbler.service.core.http.HttpUtil"));
 svcConfig.put(ISystemClock.class,
         ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.SystemClock"));
+svcConfig.put(ILocationService.class,
+        ServiceConfig.load("org.mozilla.mozstumbler.service.core.http.MLS"));
 svcConfig.put(ILogger.class,
         ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.ProductionLogger"));
 
 ServiceLocator.newRoot(svcConfig);
-Intent i = PassiveServiceReceiver.createStartIntent("a_moz_api_key",
+
+Intent i = PassiveServiceReceiver.createStartIntent(this, "a_moz_api_key",
         "Just Another User-Agent");
 startService(i);
 ```
