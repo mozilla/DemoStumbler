@@ -58,7 +58,9 @@ public class MainActivity extends ActionBarActivity {
 
         ServiceLocator.newRoot(svcConfig);
 
-        Intent i = PassiveServiceReceiver.createStartIntent(this, "a_moz_api_key",
+        final String MOZ_API_KEY = "69702f37-5b49-4fbb-856d-87cbd379911b";
+        Intent i = PassiveServiceReceiver.createStartIntent(this,
+                 MOZ_API_KEY,
                 "Just Another User-Agent");
         startService(i);
 
