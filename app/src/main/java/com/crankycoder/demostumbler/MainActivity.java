@@ -39,12 +39,22 @@ public class MainActivity extends ActionBarActivity {
         ServiceConfig svcConfig = new ServiceConfig();
         svcConfig.put(IHttpUtil.class,
                 ServiceConfig.load("com.crankycoder.demostumbler.DebugHttpUtil"));
+
+        /* In a production enviroment, you should use the real HttpUtil */
+        // svcConfig.put(IHttpUtil.class,
+        //        ServiceConfig.load("org.mozilla.mozstumbler.service.code.http.HttpUtil"));
+
         svcConfig.put(ISystemClock.class,
                 ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.SystemClock"));
         svcConfig.put(ILocationService.class,
                 ServiceConfig.load("org.mozilla.mozstumbler.service.core.http.MLS"));
         svcConfig.put(ILogger.class,
                 ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.DebugLogger"));
+
+        /* In a production enviroment, you should use the production
+         * logger */
+        // svcConfig.put(ILogger.class,
+        //        ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.ProductionLogger"));
 
         ServiceLocator.newRoot(svcConfig);
 
