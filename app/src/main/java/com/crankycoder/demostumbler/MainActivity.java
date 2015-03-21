@@ -48,13 +48,13 @@ public class MainActivity extends ActionBarActivity {
                 ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.SystemClock"));
         svcConfig.put(ILocationService.class,
                 ServiceConfig.load("org.mozilla.mozstumbler.service.core.http.MLS"));
-        svcConfig.put(ILogger.class,
-                ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.DebugLogger"));
 
         /* In a production enviroment, you should use the production
          * logger */
-        // svcConfig.put(ILogger.class,
+        //svcConfig.put(ILogger.class,
         //        ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.ProductionLogger"));
+        svcConfig.put(ILogger.class,
+                ServiceConfig.load("org.mozilla.mozstumbler.svclocator.services.log.DebugLogger"));
 
         ServiceLocator.newRoot(svcConfig);
 
@@ -96,8 +96,8 @@ public class MainActivity extends ActionBarActivity {
                 UploadAlarmReceiver.cancelAlarm(MainActivity.this, false);
 
                 // Schedule for upload every hour.  Express this in seconds.
-                final long ONE_HOUR = 60 * 60;
-                UploadAlarmReceiver.scheduleAlarm(MainActivity.this, ONE_HOUR, true);
+                final long TEN_HOUR = 10 * 60 * 60;
+                UploadAlarmReceiver.scheduleAlarm(MainActivity.this, TEN_HOUR, true);
             }
         };
 
