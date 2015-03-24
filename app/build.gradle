@@ -12,6 +12,10 @@ buildscript {
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 
+repositories {
+    maven { url "http://dl.bintray.com/crankycoder/libMozStumbler" }
+}
+
 android {
     compileSdkVersion 19
     buildToolsVersion "19.1.0"
@@ -35,6 +39,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:support-v4:21.0.+"
     compile 'com.android.support:appcompat-v7:19.1.0'
-    compile project(':stumbler-debug')
+    compile 'com.crankycoder:stumbler:0.9.0'
 }
 

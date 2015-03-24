@@ -1,1 +1,1 @@
-include ':app', ':stumbler-debug'
+include ':app'
