@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/crankycoder/DemoStumbler.svg?branch=master)](https://travis-ci.org/crankycoder/DemoStumbler)
+
 # DemoStumbler
 
 ## Embed the Mozilla Stumbler as a library in your Android Application
