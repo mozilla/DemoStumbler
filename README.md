@@ -69,5 +69,3 @@ From command line on UNIX:
 ```
 
 You can alternately just open Android Studio and use the IDE to build and install the application.
-
-
