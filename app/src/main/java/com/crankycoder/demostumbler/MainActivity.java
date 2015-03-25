@@ -2,6 +2,7 @@ package com.crankycoder.demostumbler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -89,22 +90,19 @@ public class MainActivity extends ActionBarActivity {
          Even with this repeating alarm, if your process is killed - on restart, the stumbler
          library will attempt to upload.
          */
-        TimerTask delayedDownloadSchedule= new TimerTask()  {
-            @Override
+
+        // startService() will schedule a single upload alarm to run in a few seconds, so as to allow
+        // that alarm to run, delay the call scheduleAlarm by 30 seconds (as scheduleAlarm() will cancel
+        // the pending upload alarm).
+        long DELAY_MS = 30 * 1000;
+
+        new Handler().postDelayed(new Runnable() {
             public void run() {
-                // kill the fennec startup only upload mechanism
-                UploadAlarmReceiver.cancelAlarm(MainActivity.this, false);
-
-                // Schedule for upload every hour.  Express this in seconds.
-                final long TEN_HOUR = 10 * 60 * 60;
-                UploadAlarmReceiver.scheduleAlarm(MainActivity.this, TEN_HOUR, true);
+                // Schedule for upload every 10 hours.
+                final int TEN_HOURS_IN_SEC = 10 * 60 * 60;
+                UploadAlarmReceiver.scheduleAlarm(MainActivity.this, TEN_HOURS_IN_SEC, true /* is repeating */);
             }
-        };
-
-        // We delay by 30 seconds before we schedule the repeating hourly upload job.
-        long DELAY_MS = 30*1000;
-        Timer timer = new Timer();
-        timer.schedule(delayedDownloadSchedule, DELAY_MS);
+        }, DELAY_MS);
     }
 
     /*
