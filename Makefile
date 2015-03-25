@@ -4,3 +4,5 @@ all:
 install: all
 	./gradlew installDebug
 
+clean:
+	./gradlew build
