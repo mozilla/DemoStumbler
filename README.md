@@ -1,5 +1,5 @@
 [![Build
-Status](https://travis-ci.org/crankycoder/DemoStumbler.svg?branch=master)](https://travis-ci.org/crankycoder/DemoStumbler)
+Status](https://travis-ci.org/mozilla/DemoStumbler.svg?branch=master)](https://travis-ci.org/mozilla/DemoStumbler)
 
 # DemoStumbler
 
