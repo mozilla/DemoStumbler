@@ -3,7 +3,7 @@ package com.crankycoder.demostumbler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,11 +21,9 @@ import org.mozilla.mozstumbler.svclocator.services.log.ILogger;
 import org.mozilla.mozstumbler.svclocator.services.log.LoggerUtil;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     private static String LOG_TAG = LoggerUtil.makeLogTag(MainActivity.class);
     private static ILogger Log = (ILogger) ServiceLocator.getInstance().getService(ILogger.class);
 
